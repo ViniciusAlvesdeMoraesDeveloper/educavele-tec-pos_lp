@@ -48,29 +48,29 @@ export default function HeroSection() {
     }, [])
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-green-100">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-green-50 to-gray-100">
             {/* Banner Hero */}
-            <div className="relative bg-gradient-to-r from-green-600 to-blue-800 text-white">
+            <div className="relative bg-gradient-to-r from-gray-900 to-green-900 text-white">
                 <div className="container mx-auto px-4 py-12">
                     <div className="flex flex-col lg:flex-row items-center justify-between">
                         <div className="lg:w-1/2 mb-6 lg:mb-0">
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                                Transforme seu futuro com
-                                <span className="text-green-300 block">Educação Técnica</span>
+                                Formação Completa com
+                                <span className="text-green-400 block">EducaVale</span>
                             </h1>
 
-                            <p className="text-lg md:text-xl text-green-100">
-                                Cursos práticos com foco no mercado
+                            <p className="text-lg md:text-xl text-green-200">
+                                Cursos Superiores e Técnicos com foco no mercado
                             </p>
                         </div>
 
                         <div className="lg:w-1/2 relative">
                             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                                <h3 className="text-xl font-bold mb-4 text-center">Por que a Edutec?</h3>
+                                <h3 className="text-xl font-bold mb-4 text-center">Por que a EducaVale?</h3>
                                 <div className="grid grid-cols-2 gap-3">
                                     {[
-                                        { icon: "🎯", text: "Mentoria" },
-                                        { icon: "💼", text: "Projetos" },
+                                        { icon: "🎓", text: "Graduação" },
+                                        { icon: "⚡", text: "Cursos Técnicos" },
                                         { icon: "📈", text: "Empregabilidade" },
                                         { icon: "🏆", text: "Certificação" }
                                     ].map((item, index) => (
@@ -83,11 +83,11 @@ export default function HeroSection() {
                             </div>
 
                             {/* Floating elements menores */}
-                            <div className="absolute -top-2 -right-2 bg-yellow-500 text-gray-900 px-2 py-1 rounded text-sm font-bold rotate-3 shadow">
+                            <div className="absolute -top-2 -right-2 bg-green-800 text-white px-2 py-1 rounded text-sm font-bold rotate-3 shadow">
                                 🎓 10K+
                             </div>
-                            <div className="absolute -bottom-2 -left-2 bg-green-500 text-white px-2 py-1 rounded text-sm font-bold -rotate-3 shadow">
-                                ⭐ 4.9/5
+                            <div className="absolute -bottom-2 -left-2 bg-gray-800 text-white px-2 py-1 rounded text-sm font-bold -rotate-3 shadow">
+                                ⭐ 4.9
                             </div>
                         </div>
                     </div>
@@ -101,16 +101,16 @@ export default function HeroSection() {
                 </div>
             </div>
 
-            {/* About Us Compact - Espaçamento ajustado */}
+            {/* About Us Section */}
             <section className="py-12 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-8">
-                        <h2 className="text-3xl md:text-4xl font-bold text-green-700 mb-4">
-                            Sobre a Edutec Brasil
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                            Sobre a Faculdade EducaVale
                         </h2>
-                        <div className="w-24 h-1 bg-blue-600 mx-auto mb-4"></div>
-                        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                            Há mais de 15 anos somos referência em educação técnica e profissional, formando profissionais
+                        <div className="w-24 h-1 bg-green-800 mx-auto mb-4"></div>
+                        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                            Há mais de 15 anos somos referência em educação superior e técnica, formando profissionais
                             que estão transformando o mercado de trabalho brasileiro.
                         </p>
                     </div>
@@ -122,57 +122,54 @@ export default function HeroSection() {
                             { number: "95%", text: "Taxa de empregabilidade" }
                         ].map((stat, index) => (
                             <div key={index} className="text-center p-4">
-                                <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">
+                                <div className="text-3xl md:text-4xl font-bold text-green-800 mb-2">
                                     {stat.number}
                                 </div>
-                                <div className="text-gray-600">
+                                <div className="text-gray-700">
                                     {stat.text}
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6 border border-green-200">
+                    <div className="bg-gradient-to-r from-gray-100 to-green-50 rounded-xl p-6 border border-gray-300">
                         <div className="grid md:grid-cols-2 gap-6 items-center">
                             <div>
-                                <h3 className="text-xl font-bold text-blue-800 mb-3">
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">
                                     Metodologia Exclusiva
                                 </h3>
-                                <p className="text-gray-700 mb-3">
+                                <p className="text-gray-800 mb-3">
                                     Desenvolvemos uma abordagem única que combina teoria sólida com prática intensiva,
                                     preparando você para os desafios reais do mercado de trabalho.
                                 </p>
                                 <ul className="space-y-2">
                                     {[
-                                        "Aprendizado baseado em projetos reais",
+                                        "Formação superior e técnica integrada",
                                         "Mentoria individualizada",
                                         "Conectamos você com empresas",
-                                        "Certificação reconhecida"
+                                        "Certificação reconhecida pelo MEC"
                                     ].map((item, index) => (
                                         <li key={index} className="flex items-center">
-                                            <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                                            <span className="text-gray-700">{item}</span>
+                                            <span className="w-2 h-2 bg-green-800 rounded-full mr-2"></span>
+                                            <span className="text-gray-800">{item}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                            
-                            {/* AJUSTE CHAVE PARA MOBILE: flex-col e altura responsiva */}
+
                             <div className="mt-8 md:mt-0 flex flex-col items-center">
-                                {/* Container da Imagem: Altura menor no mobile (h-48) e margin inferior */}
-                                <div className="relative w-full h-48 md:h-96 mb-6 rounded-lg shadow-lg"> 
+                                <div className="relative w-full h-48 md:h-96 mb-6 rounded-lg shadow-lg">
                                     <Image
                                         src="/banner.webp"
-                                        alt="Metodologia Edutec"
+                                        alt="Metodologia EducaVale"
                                         fill
                                         className="rounded-lg object-cover"
                                     />
                                 </div>
-                                
-                                {/* Balão de Texto: Removido o posicionamento 'absolute' para que flua APÓS a imagem. */}
-                                <div className="bg-green-600 text-white p-3 rounded-lg shadow-lg w-fit">
+
+                                <div className="bg-green-900 text-white p-3 rounded-lg shadow-lg w-fit">
                                     <div className="font-bold text-sm">Educação que</div>
-                                    <div className="font-bold text-sm">transforma!</div>
+                                    <div className="font-bold text-sm">transforma vidas!</div>
                                 </div>
                             </div>
                         </div>
@@ -180,20 +177,59 @@ export default function HeroSection() {
                 </div>
             </section>
 
-            {/* Carousel Compact */}
-            <section className="py-16 bg-gradient-to-br from-blue-50 to-green-50">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold text-blue-800 mb-4">
-                            Nossos Cursos Técnicos
+            
+            <section className="py-20 bg-gradient-to-br from-green-900 via-green-800 to-gray-900 relative overflow-hidden">
+                
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full animate-pulse"></div>
+                    <div className="absolute bottom-20 right-20 w-24 h-24 bg-green-400 rounded-full animate-bounce"></div>
+                    <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-gray-400 rounded-full animate-ping"></div>
+                </div>
+
+                <div className="container mx-auto px-4 relative z-10">
+                    
+                    <div className="text-center mb-16">
+                        {/* Badge de NOVO */}
+                        <div className="inline-flex items-center bg-yellow-500 text-gray-900 px-6 py-3 rounded-full mb-6 animate-pulse">
+                            <span className="w-3 h-3 bg-red-500 rounded-full mr-2 animate-ping"></span>
+                            <span className="font-bold text-lg">NOVO NA EDUCAVALE</span>
+                        </div>
+
+                        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                            <span className="block">Cursos</span>
+                            <span className="text-green-300">Técnicos</span>
                         </h2>
-                        <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-                            Conheça as formações que vão acelerar sua entrada no mercado de trabalho, são mais de 60 cursos para você, veja alguns dos mais procurados:
+
+                        <div className="w-32 h-1 bg-green-400 mx-auto mb-6"></div>
+
+                        <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed">
+                            Agora a EducaVale oferece <span className="text-white font-semibold" >cursos técnicos de qualidade </span>
+                            para você se qualificar rapidamente e entrar no mercado de trabalho com vantagem competitiva.
                         </p>
+
+                        {/* Estatísticas em destaque */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
+                            {[
+                                { number: "6-18", text: "Meses de duração", icon: "⏱️" },
+                                { number: "100%", text: "Foco no mercado", icon: "🎯" },
+                                { number: "60+", text: "Cursos disponíveis", icon: "📚" }
+                            ].map((stat, index) => (
+                                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 text-white">
+                                    <div className="text-3xl mb-2">{stat.icon}</div>
+                                    <div className="text-2xl md:text-3xl font-bold text-green-300 mb-1">
+                                        {stat.number}
+                                    </div>
+                                    <div className="text-green-100 font-medium">
+                                        {stat.text}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
+                    {/* Carousel atualizado */}
                     <div className="relative max-w-7xl mx-auto">
-                        <div className="overflow-hidden rounded-2xl shadow-2xl">
+                        <div className="overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20">
                             <div
                                 className="flex transition-transform duration-500 ease-in-out"
                                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -203,20 +239,25 @@ export default function HeroSection() {
                                         <div className="bg-white p-8 md:p-12">
                                             <div className="grid lg:grid-cols-2 gap-8 items-center">
                                                 <div>
-                                                    <div className="text-6xl mb-6">{slide.icon}</div>
-                                                    <h3 className="text-2xl md:text-3xl font-bold text-green-700 mb-4">
+                                                    <div className="flex items-center mb-4">
+                                                        <div className="text-6xl mr-4">{slide.icon}</div>
+                                                        <div className="bg-green-900 text-white px-4 py-1 rounded-full text-sm font-bold">
+                                                            NOVO
+                                                        </div>
+                                                    </div>
+                                                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                                                         {slide.title}
                                                     </h3>
-                                                    <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                                                    <p className="text-lg text-gray-800 mb-6 leading-relaxed">
                                                         {slide.description}
                                                     </p>
-                                                    <div className="bg-green-100 border border-green-200 rounded-lg p-4 inline-block">
-                                                        <span className="text-green-800 font-semibold text-lg">
+                                                    <div className="bg-green-900 text-white rounded-lg p-4 inline-block">
+                                                        <span className="font-semibold text-lg">
                                                             {slide.stats}
                                                         </span>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div className="relative h-80 w-full">
                                                     <Image
                                                         src={slide.imagePath}
@@ -224,7 +265,7 @@ export default function HeroSection() {
                                                         fill
                                                         className="rounded-lg shadow-lg object-cover"
                                                     />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 to-transparent rounded-lg"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -233,33 +274,51 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        {/* Navigation - Setas posicionadas fora do conteúdo */}
+                        {/* Navigation melhorada */}
                         <button
                             onClick={() => setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length)}
                             aria-label="Slide anterior"
-                            className="absolute -left-4 md:-left-8 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl flex items-center justify-center transition-all border border-gray-200"
+                            className="absolute -left-4 md:-left-8 top-1/2 transform -translate-y-1/2 bg-green-900 hover:bg-green-800 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl flex items-center justify-center transition-all border-2 border-white"
                         >
                             <span className="text-2xl">‹</span>
                         </button>
                         <button
                             onClick={() => setCurrentSlide((prev) => (prev + 1) % carouselSlides.length)}
                             aria-label="Próximo slide"
-                            className="absolute -right-4 md:-right-8 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl flex items-center justify-center transition-all border border-gray-200"
+                            className="absolute -right-4 md:-right-8 top-1/2 transform -translate-y-1/2 bg-green-900 hover:bg-green-800 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl flex items-center justify-center transition-all border-2 border-white"
                         >
                             <span className="text-2xl">›</span>
                         </button>
 
-                        {/* Indicadores */}
+                        {/* Indicadores melhorados */}
                         <div className="flex justify-center mt-8 space-x-3">
                             {carouselSlides.map((_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => setCurrentSlide(index)}
                                     aria-label={`Ir para o slide ${index + 1}`}
-                                    className={`w-4 h-4 rounded-full transition-all ${index === currentSlide ? 'bg-blue-600' : 'bg-gray-300'
+                                    className={`w-4 h-4 rounded-full transition-all ${index === currentSlide ? 'bg-white' : 'bg-white/50'
                                         }`}
                                 />
                             ))}
+                        </div>
+                    </div>
+
+                    {/* Call to Action adicional */}
+                    <div className="text-center mt-16">
+                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto border border-white/20">
+                            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                                🚀 Prepare-se para o Mercado
+                            </h3>
+                            <p className="text-green-100 text-lg mb-6">
+                                Nossos cursos técnicos são a ponte entre você e as melhores oportunidades profissionais
+                            </p>
+                            <a href="#contato">
+                            <button className="bg-white text-green-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-100 transition-colors shadow-lg"
+                            >
+                                Quero me inscrever
+                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

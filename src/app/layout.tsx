@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EduTec Brasil",
-  description: "Colégio Edutec-Brasil",
+  title: "Faculdade Educavale",
+  description: "Faculdade Educavale",
   icons: {
     icon: '/favicon.ico'
   }

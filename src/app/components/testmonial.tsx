@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect } from 'react'
-// Não precisa importar Image, pois você não o está usando aqui (está usando apenas o placeholder)
 
 const testimonials = [
     {
@@ -9,19 +8,21 @@ const testimonials = [
         role: "Técnica em Enfermagem",
         company: "Hospital Santa Maria",
         avatar: "/api/placeholder/100/100",
-        content: "O curso de Enfermagem me deu a confiança e a prática que eu precisava. A parte laboratorial é excelente. Consegui meu primeiro emprego logo após o estágio!",
+        content: "O curso técnico da Educavale me preparou para o mercado em tempo recorde. A parte prática foi essencial para minha contratação!",
         rating: 5,
-        course: "Técnico em Enfermagem"
+        course: "Técnico em Enfermagem",
+        type: "técnico"
     },
     {
         id: 2,
         name: "Carlos Eduardo Silva",
-        role: "Técnico Eletromecânica",
+        role: "Coordenador Industrial",
         company: "Indústria Metalúrgica Alfa",
         avatar: "/api/placeholder/100/100",
-        content: "A Edutec me preparou para o chão de fábrica. O módulo de automação foi crucial. Agora sou responsável pela manutenção preventiva na minha empresa.",
+        content: "A pós-graduação em Gestão Industrial da Educavale elevou minha carreira. Consegui uma promoção em 6 meses após a conclusão.",
         rating: 5,
-        course: "Técnico Eletromecânica"
+        course: "Pós em Gestão Industrial",
+        type: "pós"
     },
     {
         id: 3,
@@ -29,114 +30,174 @@ const testimonials = [
         role: "Corretora de Imóveis",
         company: "Imobiliária Prime",
         avatar: "/api/placeholder/100/100",
-        content: "O curso de TTI da Edutec foi rápido e direto ao ponto. Aprendi toda a legislação e marketing imobiliário necessário para tirar meu CRECI e começar a vender.",
-        rating: 4, 
-        course: "Transação Imobiliária (TTI)"
+        content: "O TTI da Educavale foi perfeito para minha recolocação profissional. Em 3 meses já estava atuando no mercado imobiliário.",
+        rating: 4,
+        course: "Transação Imobiliária (TTI)",
+        type: "técnico"
     },
     {
         id: 4,
         name: "Antônio Pires",
-        role: "Consultor Agrícola",
+        role: "Gerente Agrícola",
         company: "Fazenda Progresso",
         avatar: "/api/placeholder/100/100",
-        content: "O foco em agricultura de precisão e gestão de culturas fez toda a diferença. Apliquei os conhecimentos na fazenda da família e já aumentamos a produtividade em 20%.",
+        content: "A pós em Agronegócio transformou nossa propriedade. Aplicamos as técnicas aprendidas e aumentamos a produtividade em 35%.",
         rating: 5,
-        course: "Técnico em Agricultura"
+        course: "Pós em Agronegócio",
+        type: "pós"
     },
     {
         id: 5,
         name: "Juliana Rocha",
-        role: "Auxiliar de Enfermagem",
+        role: "Enfermeira Coordenadora",
         company: "Clínica Vida Nova",
         avatar: "/api/placeholder/100/100",
-        content: "Professores muito atenciosos e aulas práticas de verdade. Recomendo para quem busca uma formação sólida e rápida para entrar no mercado de saúde.",
+        content: "Fiz o técnico e depois a pós em Enfermagem na Educavale. A formação completa fez toda diferença na minha progressão.",
         rating: 5,
-        course: "Técnico em Enfermagem"
+        course: "Pós em Enfermagem do Trabalho",
+        type: "pós"
     },
     {
         id: 6,
         name: "Guilherme Santos",
-        role: "Corretor Autônomo",
-        company: "Creci-MG",
+        role: "Analista de Sistemas",
+        company: "Tech Solutions",
         avatar: "/api/placeholder/100/100",
-        content: "O material didático do TTI é excelente. Consegui conciliar o estudo com o trabalho e, em pouco tempo, já estava com minha carteira de imóveis.",
-        rating: 4,
-        course: "Transação Imobiliária (TTI)"
+        content: "A pós em Data Science me colocou na vanguarda do mercado. O conteúdo atualizado e professores experientes foram cruciais.",
+        rating: 5,
+        course: "Pós em Data Science",
+        type: "pós"
     }
 ]
 
 export default function Testimonials() {
     const [currentTestimonial, setCurrentTestimonial] = useState(0)
+    const [filter, setFilter] = useState('todos')
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+            setCurrentTestimonial((prev) => (prev + 1) % filteredTestimonials.length)
         }, 5000)
         return () => clearInterval(timer)
-    }, [])
+    }, [filter])
 
-    const visibleTestimonials = testimonials.slice(currentTestimonial, currentTestimonial + 3)
-    
-    // Garante que sempre mostre 3 depoimentos (lógica de carrossel contínuo)
-    if (visibleTestimonials.length < 3) {
-        visibleTestimonials.push(...testimonials.slice(0, 3 - visibleTestimonials.length))
+    const filteredTestimonials = filter === 'todos'
+        ? testimonials
+        : testimonials.filter(t => t.type === filter)
+
+   
+    const getVisibleTestimonials = () => {
+        let visible = []
+
+        for (let i = 0; i < 3; i++) {
+            const index = (currentTestimonial + i) % filteredTestimonials.length
+            visible.push({
+                ...filteredTestimonials[index],
+                uniqueKey: `${filteredTestimonials[index].id}-${i}` // Chave única
+            })
+        }
+
+        return visible
     }
 
+    const visibleTestimonials = getVisibleTestimonials()
+
     return (
-        <section id='text' className="py-16 bg-gradient-to-br from-green-50 to-blue-50">
+        <section id='depoimentos' className="py-20 bg-gradient-to-br from-gray-50 to-green-50">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-green-700 mb-4">
-                        O que nossos alunos dizem
+                {/* Header com Filtros */}
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        Vozes de Sucesso
                     </h2>
-                    <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Histórias reais de transformação e sucesso profissional
+                    <div className="w-32 h-1 bg-green-800 mx-auto mb-8"></div>
+                    <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
+                        Descubra as histórias reais de transformação através dos nossos cursos técnicos e pós-graduações
                     </p>
+
+                    {/* Filtros */}
+                    <div className="flex flex-wrap justify-center gap-4 mb-12">
+                        <button
+                            onClick={() => { setFilter('todos'); setCurrentTestimonial(0) }}
+                            className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === 'todos'
+                                    ? 'bg-green-800 text-white shadow-lg'
+                                    : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
+                                }`}
+                        >
+                            Todos os Cursos
+                        </button>
+                        <button
+                            onClick={() => { setFilter('técnico'); setCurrentTestimonial(0) }}
+                            className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === 'técnico'
+                                    ? 'bg-green-800 text-white shadow-lg'
+                                    : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
+                                }`}
+                        >
+                            Cursos Técnicos
+                        </button>
+                        <button
+                            onClick={() => { setFilter('pós'); setCurrentTestimonial(0) }}
+                            className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === 'pós'
+                                    ? 'bg-green-800 text-white shadow-lg'
+                                    : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
+                                }`}
+                        >
+                            Pós-Graduações
+                        </button>
+                    </div>
                 </div>
 
-                {/* Grid de Depoimentos */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    {visibleTestimonials.map((testimonial) => ( // Removido o 'index' não utilizado
-                        <div 
-                            key={testimonial.id}
-                            className="bg-white rounded-2xl shadow-lg p-6 border border-green-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                    {visibleTestimonials.map((testimonial) => (
+                        <div
+                            key={testimonial.uniqueKey} 
+                            className={`bg-white rounded-3xl shadow-2xl p-8 border-2 transition-all duration-500 transform hover:scale-105 ${testimonial.type === 'técnico'
+                                    ? 'border-green-800 hover:shadow-green-900/20'
+                                    : 'border-gray-800 hover:shadow-gray-900/20'
+                                }`}
                         >
-                            {/* Header do Depoimento */}
-                            <div className="flex items-center mb-4">
-                                {/* Aqui você usaria o componente Image do Next.js se tivesse a foto, 
-                                mas o placeholder está mantido para funcionar */}
-                                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                    {testimonial.name.charAt(0)}
+                            
+                            <div className="flex items-start justify-between mb-6">
+                                <div className="flex items-center">
+                                    <div className={`w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4 ${testimonial.type === 'técnico' ? 'bg-green-800' : 'bg-gray-800'
+                                        }`}>
+                                        {testimonial.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
+                                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                                        <p className="text-xs text-gray-500">{testimonial.company}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
-                                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                                    <p className="text-xs text-gray-500">{testimonial.company}</p>
-                                </div>
+                                <span className={`text-xs font-bold px-3 py-1 rounded-full ${testimonial.type === 'técnico'
+                                        ? 'bg-green-100 text-green-800'
+                                        : 'bg-gray-100 text-gray-800'
+                                    }`}>
+                                    {testimonial.type === 'técnico' ? 'TÉCNICO' : 'PÓS-GRADUAÇÃO'}
+                                </span>
                             </div>
 
                             {/* Rating */}
-                            <div className="flex mb-4">
-                                {/* Aqui, o índice '_' é ignorado corretamente */}
+                            <div className="flex mb-6">
                                 {[...Array(testimonial.rating)].map((_, i) => (
-                                    <span key={i} className="text-yellow-400 text-lg">⭐</span>
+                                    <span key={i} className="text-yellow-500 text-xl">★</span>
                                 ))}
-                                {/* Adiciona estrelas vazias se o rating for menor que 5 */}
                                 {[...Array(5 - testimonial.rating)].map((_, i) => (
-                                    <span key={i + testimonial.rating} className="text-gray-300 text-lg">⭐</span>
+                                    <span key={i + testimonial.rating} className="text-gray-300 text-xl">★</span>
                                 ))}
                             </div>
 
-                            {/* Conteúdo do Depoimento - CORREÇÃO APLICADA AQUI */}
-                            <p className="text-gray-700 mb-4 leading-relaxed">
-                                {testimonial.content} 
-                            </p>
+                            {/* Conteúdo */}
+                            <blockquote className="text-gray-800 mb-6 leading-relaxed text-lg italic">
+                                "{testimonial.content}"
+                            </blockquote>
 
                             {/* Curso */}
-                            <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2">
-                                <p className="text-sm text-green-800 font-semibold">
-                                    Curso: {testimonial.course}
+                            <div className={`border-l-4 pl-4 ${testimonial.type === 'técnico' ? 'border-green-800' : 'border-gray-800'
+                                }`}>
+                                <p className="text-sm font-semibold text-gray-900">
+                                    {testimonial.course}
                                 </p>
                             </div>
                         </div>
@@ -144,36 +205,49 @@ export default function Testimonials() {
                 </div>
 
                 {/* Indicadores */}
-                <div className="flex justify-center space-x-2">
-                    {testimonials.slice(0, testimonials.length - 2).map((_, index) => (
+                <div className="flex justify-center space-x-3 mb-16">
+                    {filteredTestimonials.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => setCurrentTestimonial(index)}
-                            className={`w-3 h-3 rounded-full transition-all ${
-                                index === currentTestimonial ? 'bg-blue-600' : 'bg-gray-300'
-                            }`}
+                            className={`w-4 h-4 rounded-full transition-all ${index === currentTestimonial ? 'bg-green-800' : 'bg-gray-300'
+                                }`}
                             aria-label={`Ir para depoimento ${index + 1}`}
                         />
                     ))}
                 </div>
 
-                {/* Estatística Final */}
-                <div className="text-center mt-12">
-                    <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto border border-blue-100">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div className="text-center">
-                                <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">5</div>
-                                <div className="text-gray-600">Avaliação média</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">98%</div>
-                                <div className="text-gray-600">Recomendariam a Edutec</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">10K+</div>
-                                <div className="text-gray-600">Depoimentos positivos</div>
-                            </div>
+                
+                <div className="bg-gradient-to-r from-gray-900 to-green-900 rounded-3xl shadow-2xl p-12 text-white">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                        <div className="border-r border-green-600 pr-8 last:border-r-0 last:pr-0">
+                            <div className="text-4xl md:text-5xl font-bold text-white mb-2">4.8</div>
+                            <div className="text-green-200 font-medium">Avaliação média</div>
                         </div>
+                        <div className="border-r border-green-600 pr-8 last:border-r-0 last:pr-0">
+                            <div className="text-4xl md:text-5xl font-bold text-white mb-2">96%</div>
+                            <div className="text-green-200 font-medium">Indicam a Educavale</div>
+                        </div>
+                        <div className="border-r border-green-600 pr-8 last:border-r-0 last:pr-0">
+                            <div className="text-4xl md:text-5xl font-bold text-white mb-2">5K+</div>
+                            <div className="text-green-200 font-medium">Alunos satisfeitos</div>
+                        </div>
+                        <div>
+                            <div className="text-4xl md:text-5xl font-bold text-white mb-2">15+</div>
+                            <div className="text-green-200 font-medium">Anos de excelência</div>
+                        </div>
+                    </div>
+
+                    {/* Call to Action */}
+                    <div className="text-center mt-8 pt-8 border-t border-green-600">
+                        <p className="text-green-100 text-lg mb-4">
+                            Faça parte dessa história de sucesso
+                        </p>
+                        <a href="#contato">
+                        <button className="bg-white text-green-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-100 transition-colors shadow-lg">
+                            Quero me Matricular
+                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ export default function BottomUpper() {
     window.scrollTo({top: 0, behavior:"smooth"});
  }
   return (
-     <div className="scrollUp fixed bottom-4 right-4 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors">
+     <div className="scrollUp fixed bottom-4 right-4 bg-green-800 text-white p-3 rounded-full shadow-lg hover:bg-green-500 transition-colors">
       <button
         onClick={handleScrollTop}
         className="flex items-center justify-center"

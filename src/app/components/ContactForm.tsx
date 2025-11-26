@@ -7,7 +7,7 @@ interface FormData {
   telefone: string
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 declare global {
   interface Window {
     gtag: (...args: any[]) => void
@@ -50,7 +50,7 @@ export default function ContactForm() {
 
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-17611655398/SEU_ROTULO_DE_CONVERSAO', 
+        'send_to': '', 
         'value': 1.0,
         'currency': 'BRL',
         'transaction_id': ''
