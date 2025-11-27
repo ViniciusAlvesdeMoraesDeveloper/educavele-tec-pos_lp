@@ -48,7 +48,7 @@ export default function HeroSection() {
     }, [])
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-green-50 to-gray-100">
+        <div id='curso' className="min-h-screen bg-gradient-to-br from-gray-50 via-green-50 to-gray-100">
             {/* Banner Hero */}
             <div className="relative bg-gradient-to-r from-gray-900 to-green-900 text-white">
                 <div className="container mx-auto px-4 py-12">
@@ -132,7 +132,7 @@ export default function HeroSection() {
                         ))}
                     </div>
 
-                    <div className="bg-gradient-to-r from-gray-100 to-green-50 rounded-xl p-6 border border-gray-300">
+                    <div className="bg-gradient-to-r from-green-100 to-green-50 rounded-xl p-6 border border-gray-300">
                         <div className="grid md:grid-cols-2 gap-6 items-center">
                             <div>
                                 <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -165,12 +165,7 @@ export default function HeroSection() {
                                         fill
                                         className="rounded-lg object-cover"
                                     />
-                                </div>
-
-                                <div className="bg-green-900 text-white p-3 rounded-lg shadow-lg w-fit">
-                                    <div className="font-bold text-sm">Educação que</div>
-                                    <div className="font-bold text-sm">transforma vidas!</div>
-                                </div>
+                                </div>    
                             </div>
                         </div>
                     </div>
@@ -178,7 +173,7 @@ export default function HeroSection() {
             </section>
 
             
-            <section className="py-20 bg-gradient-to-br from-green-900 via-green-800 to-gray-900 relative overflow-hidden">
+            <section id='tecnico' className="py-20 bg-gradient-to-br from-green-900 via-green-800 to-gray-900 relative overflow-hidden">
                 
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full animate-pulse"></div>
@@ -189,8 +184,8 @@ export default function HeroSection() {
                 <div className="container mx-auto px-4 relative z-10">
                     
                     <div className="text-center mb-16">
-                        {/* Badge de NOVO */}
-                        <div className="inline-flex items-center bg-yellow-500 text-gray-900 px-6 py-3 rounded-full mb-6 animate-pulse">
+                        
+                        <div  className="inline-flex items-center bg-yellow-500 text-gray-900 px-6 py-3 rounded-full mb-6 animate-pulse">
                             <span className="w-3 h-3 bg-red-500 rounded-full mr-2 animate-ping"></span>
                             <span className="font-bold text-lg">NOVO NA EDUCAVALE</span>
                         </div>

@@ -10,21 +10,21 @@ export default function Banner() {
       
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between">
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
+          <div className="lg:w-1/2 mb-8 lg:mb-25 ">
             {/* Badge destacada */}
-            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/30">
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/30 ml-80">
               <span className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></span>
               <span className="text-lg font-semibold">+15 anos de excelência em educação</span>
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               Faculdade
-              <span className="text-green-400 block">EducaVale</span>
+              <span className="text-green-400 "> EducaVale</span>
             </h1>
             
             <p className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 text-green-200 leading-relaxed">
               Educação Superior e
-              <span className="block text-white">Cursos Técnicos</span>
+              <span className=" text-white"> Cursos Técnicos</span>
             </p>
             
             <p className="text-xl md:text-2xl opacity-95 max-w-2xl">

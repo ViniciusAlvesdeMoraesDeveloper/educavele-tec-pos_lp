@@ -97,26 +97,20 @@ const TopBarLP: React.FC = () => {
             <nav className="hidden md:flex items-center space-x-8 h-full">
               
               <div className="flex items-center space-x-6">
-                
-                <div className={`flex items-center space-x-2 transition-colors`}>
-                  <Shield
-                    className={`w-4 h-4 transition-colors text-gray-700`}
-                  />
-                  <span
-                    className={`text-sm font-medium transition-colors text-gray-700`}
-                  >
-                    100% Seguro
-                  </span>
-                </div>
-
+               
                 {/* Avaliação */}
                 <div className={`flex items-center space-x-2 transition-colors`}>
-                  <Star className={`w-4 h-4 transition-colors text-gray-700`} />
-                  <span
-                    className={`text-sm font-medium transition-colors text-gray-700`}
-                  >
-                    Avaliação 5★
-                  </span>
+                  <a
+                href="#tecnico"
+                className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium hover:scale-105 text-gray-700 hover:text-[#00b153]`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavLinkClick("tecnico");
+                }}
+              >
+                Cursos
+              </a>
+
                 </div>
               </div>
 

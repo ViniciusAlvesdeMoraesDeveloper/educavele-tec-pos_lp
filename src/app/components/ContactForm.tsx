@@ -1,10 +1,12 @@
 'use client'
 import { useState } from 'react'
+import { submitSubscription, SubscriptionData, toSafeNumber, normalizePhone } from './lib/api'
 
 interface FormData {
   nome: string
   email: string
   telefone: string
+  areaDeInteresse: string
 }
 
 
@@ -30,7 +32,8 @@ export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     nome: '',
     email: '',
-    telefone: ''
+    telefone: '',
+    areaDeInteresse:'N/A'
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,9 +45,28 @@ export default function ContactForm() {
   }
 
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
+    const enterpriseId = toSafeNumber(process.env.NEXT_PUBLIC_ENTERPRISE_ID, 1 );
+
+    const normalizedPhone = normalizePhone(formData.telefone);
+    
+    const subscriptionData : SubscriptionData ={
+      name: formData.nome,
+      phone: normalizedPhone,
+      areaOfInterest: formData.areaDeInteresse,
+      enterpriseId: enterpriseId
+    };
+
+    try {
+      await submitSubscription(subscriptionData);
+      console.log('Lead enviado com sucesso para a API');
+    } catch (error) {
+      console.error('Falha ao enviar lead para a API:', error);
+    }
+
+    
 
     
 
@@ -71,7 +93,8 @@ export default function ContactForm() {
     setFormData({
       nome: '',
       email: '',
-      telefone: ''
+      telefone: '',
+      areaDeInteresse:'N/A'
     })
   }
 
