@@ -51,10 +51,10 @@ export default function HeroSection() {
         <div id='curso' className="min-h-screen bg-gradient-to-br from-gray-50 via-green-50 to-gray-100">
             {/* Banner Hero */}
             <div className="relative bg-gradient-to-r from-gray-900 to-green-900 text-white">
-                <div className="container mx-auto px-4 py-12">
+                <div className="container mx-auto px-4 py-9">
                     <div className="flex flex-col lg:flex-row items-center justify-between">
                         <div className="lg:w-1/2 mb-6 lg:mb-0">
-                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                            <h1 className="text-3xl md:text-3xl lg:text-5xl font-bold mb-4  leading-tight">
                                 Formação Completa com
                                 <span className="text-green-400 block">EducaVale</span>
                             </h1>
@@ -87,7 +87,7 @@ export default function HeroSection() {
                                 🎓 10K+
                             </div>
                             <div className="absolute -bottom-2 -left-2 bg-gray-800 text-white px-2 py-1 rounded text-sm font-bold -rotate-3 shadow">
-                                ⭐ 4.9
+                                ⭐ 4.8
                             </div>
                         </div>
                     </div>
@@ -102,79 +102,80 @@ export default function HeroSection() {
             </div>
 
             {/* About Us Section */}
-            <section className="py-12 bg-white">
+            <section className="py-16 bg-white">
                 <div className="container mx-auto px-4">
-                    <div className="text-center mb-8">
+                    <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Sobre a Faculdade EducaVale
+                            Tradição e Inovação na Educação Superior
                         </h2>
-                        <div className="w-24 h-1 bg-green-800 mx-auto mb-4"></div>
-                        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                            Há mais de 15 anos somos referência em educação superior e técnica, formando profissionais
-                            que estão transformando o mercado de trabalho brasileiro.
+                        <div className="w-24 h-1 bg-green-800 mx-auto mb-6"></div>
+                        <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                            Há mais de 5 anos construímos uma trajetória de excelência acadêmica, formando profissionais
+                            que se destacam pela competência técnica e visão estratégica no mercado brasileiro.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-6 mb-8">
+                    <div className="grid md:grid-cols-3 gap-8 mb-12">
                         {[
-                            { number: "15+", text: "Anos de experiência" },
-                            { number: "10.000+", text: "Alunos formados" },
-                            { number: "95%", text: "Taxa de empregabilidade" }
+                            { number: "5+", text: "Anos de excelência acadêmica" },
+                            { number: "10.000+", text: "Profissionais qualificados" },
+                            { number: "95%", text: "Inserção no mercado de trabalho" }
                         ].map((stat, index) => (
-                            <div key={index} className="text-center p-4">
-                                <div className="text-3xl md:text-4xl font-bold text-green-800 mb-2">
+                            <div key={index} className="text-center p-6 bg-gray-50 rounded-lg hover:bg-green-50 transition-colors duration-300">
+                                <div className="text-4xl md:text-5xl font-bold text-green-800 mb-3">
                                     {stat.number}
                                 </div>
-                                <div className="text-gray-700">
+                                <div className="text-gray-700 font-medium">
                                     {stat.text}
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="bg-gradient-to-r from-green-100 to-green-50 rounded-xl p-6 border border-gray-300">
-                        <div className="grid md:grid-cols-2 gap-6 items-center">
+                    <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-8 border border-green-200 shadow-sm">
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                                    Metodologia Exclusiva
+                                <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                                    Excelência Acadêmica com Resultados Reais
                                 </h3>
-                                <p className="text-gray-800 mb-3">
-                                    Desenvolvemos uma abordagem única que combina teoria sólida com prática intensiva,
-                                    preparando você para os desafios reais do mercado de trabalho.
+                                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                                    Unimos o rigor acadêmico às necessidades do mercado contemporâneo,
+                                    oferecendo uma formação que transforma conhecimento em competências profissionais diferenciadas.
                                 </p>
-                                <ul className="space-y-2">
+                                <ul className="space-y-4">
                                     {[
-                                        "Formação superior e técnica integrada",
-                                        "Mentoria individualizada",
-                                        "Conectamos você com empresas",
-                                        "Certificação reconhecida pelo MEC"
+                                        "Fundamentação teórica robusta com aplicação prática avançada",
+                                        "Orientação personalizada com profissionais experientes",
+                                        "Rede de conexões com organizações de destaque",
+                                        "Certificação com reconhecimento nacional e relevância mercadológica"
                                     ].map((item, index) => (
-                                        <li key={index} className="flex items-center">
-                                            <span className="w-2 h-2 bg-green-800 rounded-full mr-2"></span>
-                                            <span className="text-gray-800">{item}</span>
+                                        <li key={index} className="flex items-start">
+                                            <span className="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                            <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
                             <div className="mt-8 md:mt-0 flex flex-col items-center">
-                                <div className="relative w-full h-48 md:h-96 mb-6 rounded-lg shadow-lg">
+                                <div className="relative w-full h-48 md:h-96 mb-6 rounded-xl overflow-hidden shadow-md">
                                     <Image
                                         src="/banner.webp"
-                                        alt="Metodologia EducaVale"
+                                        alt="Metodologia de Excelência Acadêmica"
                                         fill
-                                        className="rounded-lg object-cover"
+                                        className="object-cover"
+                                        priority
                                     />
-                                </div>    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            
+
             <section id='tecnico' className="py-20 bg-gradient-to-br from-green-900 via-green-800 to-gray-900 relative overflow-hidden">
-                
+
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full animate-pulse"></div>
                     <div className="absolute bottom-20 right-20 w-24 h-24 bg-green-400 rounded-full animate-bounce"></div>
@@ -182,10 +183,10 @@ export default function HeroSection() {
                 </div>
 
                 <div className="container mx-auto px-4 relative z-10">
-                    
+
                     <div className="text-center mb-16">
-                        
-                        <div  className="inline-flex items-center bg-yellow-500 text-gray-900 px-6 py-3 rounded-full mb-6 animate-pulse">
+
+                        <div className="inline-flex items-center bg-yellow-500 text-gray-900 px-6 py-3 rounded-full mb-6 animate-pulse">
                             <span className="w-3 h-3 bg-red-500 rounded-full mr-2 animate-ping"></span>
                             <span className="font-bold text-lg">NOVO NA EDUCAVALE</span>
                         </div>
@@ -309,15 +310,15 @@ export default function HeroSection() {
                                 Nossos cursos técnicos são a ponte entre você e as melhores oportunidades profissionais
                             </p>
                             <a href="#contato">
-                            <button className="bg-white text-green-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-100 transition-colors shadow-lg"
-                            >
-                                Quero me inscrever
-                            </button>
+                                <button className="bg-white text-green-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-100 transition-colors shadow-lg"
+                                >
+                                    Quero me inscrever
+                                </button>
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
+        </div >
     )
 }

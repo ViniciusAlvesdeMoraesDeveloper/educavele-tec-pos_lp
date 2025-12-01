@@ -14,7 +14,7 @@ export default function Banner() {
             {/* Badge destacada */}
             <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/30 ml-80">
               <span className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></span>
-              <span className="text-lg font-semibold">+15 anos de excelência em educação</span>
+              <span className="text-lg font-semibold">+5 anos de excelência em educação</span>
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">

@@ -7,11 +7,9 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
-            <h3 className="text-2xl font-bold text-white mb-4">Faculdade EducaVale</h3>
+            <h3 className="text-2xl font-bold text-white mb-3">Faculdade EducaVale</h3>
             <p className="text-green-100 mb-4 max-w-md">
-              Há mais de 15 anos transformando vidas através da educação de qualidade.
-              Oferecemos cursos superiores, pós-graduações e agora cursos técnicos,
-              com foco na empregabilidade e desenvolvimento profissional.
+              Mais de 5 anos de educação superior (graduação, pós) e técnica. Foco total em sua empregabilidade e desenvolvimento profissional.
             </p>
             <div className="flex space-x-4">
               <div className="bg-white/10 p-2 rounded-lg hover:bg-white/20 transition-colors">
