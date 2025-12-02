@@ -59,12 +59,12 @@ export default function HeroSection() {
                                 <span className="text-green-400 block">EducaVale</span>
                             </h1>
 
-                            <p className="text-lg md:text-xl text-green-200">
+                            <p className="text-lg md:text-xl text-white">
                                 Cursos Superiores e Técnicos com foco no mercado
                             </p>
                         </div>
 
-                        <div className="lg:w-1/2 relative">
+                        <div className="lg:w-1/2 relative mb-5 ">
                             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                                 <h3 className="text-xl font-bold mb-4 text-center">Por que a EducaVale?</h3>
                                 <div className="grid grid-cols-2 gap-3">
@@ -96,7 +96,7 @@ export default function HeroSection() {
                 {/* Wave divider menor */}
                 <div id='sobre' className="absolute bottom-0 left-0 right-0">
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-8">
-                        <path d="M0,0V30c120-30,240-30,360-10s240,40,360,40s240-30,360-40s240,10,360,10V0Z" className="fill-white"></path>
+                        <path d="M0,0V30c120-30,240-30,360-10s240,40,360,40s240-30,360-40s240,10,360,10V0Z" className="fill-green-200"></path>
                     </svg>
                 </div>
             </div>

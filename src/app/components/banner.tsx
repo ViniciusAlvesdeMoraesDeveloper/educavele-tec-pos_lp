@@ -8,11 +8,11 @@ export default function Banner() {
         <div className="absolute bottom-20 left-1/3 w-12 h-12 bg-gray-400 rounded-full animate-ping"></div>
       </div>
       
-      <div className="container mx-auto px-4 py-16 relative z-10">
+      <div className="container mx-auto px-4 py-16  z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2 mb-8 lg:mb-25 ">
             {/* Badge destacada */}
-            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/30 ml-80">
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-white/30 ml-60">
               <span className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></span>
               <span className="text-lg font-semibold">+5 anos de excelência em educação</span>
             </div>

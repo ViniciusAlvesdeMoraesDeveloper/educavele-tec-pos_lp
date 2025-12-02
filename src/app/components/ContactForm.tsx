@@ -176,7 +176,7 @@ export default function ContactForm() {
 
               <button
                 type="submit"
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl"
+                className="w-full bg-green-800 hover:bg-green-900 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl"
               >
                 Falar com Consultor no WhatsApp
               </button>
