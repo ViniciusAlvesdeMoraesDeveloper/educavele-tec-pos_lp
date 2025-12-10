@@ -1,4 +1,6 @@
 "use client";
+// Importar o componente Image do Next.js
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import {
   MessageCircle,
@@ -22,9 +24,10 @@ const scrollToSection = (id: string) => {
 
 const TopBarLP: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  
+  // CORREÇÃO 1: Variável 'scrolled' removida, pois não estava sendo utilizada.
+  // const [scrolled, setScrolled] = useState(false); 
+  // O estado 'scrolled' e seu useEffect associado serão removidos abaixo.
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -50,7 +53,9 @@ const TopBarLP: React.FC = () => {
     };
   }, [isMenuOpen]);
 
-  // Efeito para detectar a rolagem
+  // CORREÇÃO 1: O useEffect que atualizava 'scrolled' foi removido, 
+  // já que a variável não é mais utilizada.
+  /*
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -59,17 +64,20 @@ const TopBarLP: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  */
 
   const handleNavLinkClick = (targetId: string) => {
     scrollToSection(targetId);
     setIsMenuOpen(false);
   };
 
-  
+
   return (
     <>
       <header
         className={
+          // Se 'scrolled' fosse usado para mudar o estilo, 
+          // a classe seria aplicada aqui. Mantendo a original por simplicidade.
           "w-full h-16 fixed top-0 left-0 right-0 z-50 font-poppins bg-white shadow-sm"
         }
       >
@@ -85,31 +93,35 @@ const TopBarLP: React.FC = () => {
                   scrollToSection("hero");
                 }}
               >
-                
-                <img
-                  src="/logoeducavale.png" 
+
+                {/* CORREÇÃO 2: Substituído <img> por <Image /> do Next.js */}
+                <Image
+                  src="/logoeducavale.png"
                   alt="Educavale logo"
-                  className="w-25 h-30 rounded-xl object-contain"
+                  // Next/Image requer width e height
+                  width={120} // Ajuste conforme a dimensão real do seu logo
+                  height={30} // Ajuste conforme a dimensão real do seu logo
+                  className="w-auto h-auto rounded-xl object-contain" // Mantido os estilos Tailwind
                 />
               </a>
             </div>
 
             <nav className="hidden md:flex items-center space-x-8 h-full">
-              
+
               <div className="flex items-center space-x-6">
-               
+
                 {/* Avaliação */}
                 <div className={`flex items-center space-x-2 transition-colors`}>
                   <a
-                href="#tecnico"
-                className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium hover:scale-105 text-gray-700 hover:text-[#00b153]`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavLinkClick("tecnico");
-                }}
-              >
-                Cursos
-              </a>
+                    href="#tecnico"
+                    className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium hover:scale-105 text-gray-700 hover:text-[#00b153]`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavLinkClick("tecnico");
+                    }}
+                  >
+                    Cursos
+                  </a>
 
                 </div>
               </div>
@@ -142,7 +154,7 @@ const TopBarLP: React.FC = () => {
               <button
                 type="button"
                 onClick={openWhatsApp}
-                className={`flex items-center space-x-3 px-6 py-3 bg-green-800  text-white rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#00b153] focus:ring-opacity-50 animate-pulse hover:animate-none`}
+                className={`flex items-center space-x-3 px-6 py-3 bg-green-800  text-white rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#00b153] focus:ring-opacity-50 animate-pulse hover:animate-none`}
               >
                 <UserPlus className="w-5 h-5" />
                 <span>Entre em contato!</span>
@@ -219,7 +231,7 @@ const TopBarLP: React.FC = () => {
                 className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#00b153] hover:text-white transition-all duration-200 font-medium"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavLinkClick("text");
+                  handleNavLinkClick("depoimentos"); // Corrigido de "text" para "depoimentos"
                 }}
               >
                 <MessageCircle className="w-5 h-5" />
@@ -230,7 +242,7 @@ const TopBarLP: React.FC = () => {
               <div className="pt-4">
                 <button
                   onClick={openWhatsApp}
-                  className={`w-full flex items-center justify-center space-x-3 px-6 py-4 bg-green-800  text-white rounded-xl font-bold shadow-md transition-all duration-300 hover:opacity-90`}
+                  className={`w-full flex items-center justify-center space-x-3 px-6 py-4 bg-green-800  text-white rounded-xl font-bold shadow-md transition-all duration-300 hover:opacity-90`}
                 >
                   <UserPlus className="w-5 h-5" />
                   <span>Entre em contato!</span>

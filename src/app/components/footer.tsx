@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Youtube, Instagram, Facebook } from "lucide-react"
+import { Instagram, Facebook } from "lucide-react"
 
 export default function Footer() {
   return (

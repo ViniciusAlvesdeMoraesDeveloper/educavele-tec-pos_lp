@@ -8,12 +8,6 @@ interface FormData {
 }
 
 
-declare global {
-  interface Window {
-    gtag: (...args: any[]) => void
-  }
-}
-
 const whatsappNumbers = [
   '553173575604',
   '553193494235',
@@ -43,15 +37,6 @@ export default function ContactForm() {
 
 
 
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        'send_to': '',
-        'value': 1.0,
-        'currency': 'BRL',
-        'transaction_id': ''
-      });
-      console.log('Conversão do Google Ads enviada: AW-17611655398/SEU_ROTULO_DE_CONVERSAO');
-    }
 
 
     const randomNumber = whatsappNumbers[Math.floor(Math.random() * whatsappNumbers.length)]

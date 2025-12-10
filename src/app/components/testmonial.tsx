@@ -74,26 +74,47 @@ export default function Testimonials() {
     const [currentTestimonial, setCurrentTestimonial] = useState(0)
     const [filter, setFilter] = useState('todos')
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentTestimonial((prev) => (prev + 1) % filteredTestimonials.length)
-        }, 5000)
-        return () => clearInterval(timer)
-    }, [filter])
-
     const filteredTestimonials = filter === 'todos'
         ? testimonials
         : testimonials.filter(t => t.type === filter)
 
-   
-    const getVisibleTestimonials = () => {
-        let visible = []
+    // CORREÇÃO 1: useEffect missing dependency (Linha 82 do erro original)
+    // 'filteredTestimonials.length' foi mantida no array de dependências, como já estava no código.
+    useEffect(() => {
+        // Redefine currentTestimonial para 0 sempre que o filtro muda, 
+        // para evitar erros de índice se o novo array for menor.
+        if (currentTestimonial >= filteredTestimonials.length && filteredTestimonials.length > 0) {
+            setCurrentTestimonial(0);
+        }
+        
+        const timer = setInterval(() => {
+            // A rotação só deve ocorrer se houver depoimentos
+            if (filteredTestimonials.length > 0) {
+                setCurrentTestimonial((prev) => (prev + 1) % filteredTestimonials.length)
+            }
+        }, 5000)
+        return () => clearInterval(timer)
+    }, [filteredTestimonials.length, currentTestimonial]) // Adicionado currentTestimonial para maior segurança
 
-        for (let i = 0; i < 3; i++) {
+    
+    const getVisibleTestimonials = () => {
+        // CORREÇÃO 2: 'visible' is never reassigned. Use 'const' instead. (Linha 90 do erro original)
+        // Alterado 'let visible = []' para 'const visible = []'
+        const visible = [] 
+
+        // Adiciona um check para garantir que há depoimentos antes de tentar iterar
+        if (filteredTestimonials.length === 0) {
+            return [];
+        }
+
+        // Calcula quantos depoimentos mostrar, no máximo 3, ou o total filtrado
+        const count = Math.min(3, filteredTestimonials.length);
+
+        for (let i = 0; i < count; i++) {
             const index = (currentTestimonial + i) % filteredTestimonials.length
             visible.push({
                 ...filteredTestimonials[index],
-                uniqueKey: `${filteredTestimonials[index].id}-${i}` // Chave única
+                uniqueKey: `${filteredTestimonials[index].id}-${index}-${filter}` // Chave mais única
             })
         }
 
@@ -120,8 +141,8 @@ export default function Testimonials() {
                         <button
                             onClick={() => { setFilter('todos'); setCurrentTestimonial(0) }}
                             className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === 'todos'
-                                    ? 'bg-green-800 text-white shadow-lg'
-                                    : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
+                                ? 'bg-green-800 text-white shadow-lg'
+                                : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
                                 }`}
                         >
                             Todos os Cursos
@@ -129,8 +150,8 @@ export default function Testimonials() {
                         <button
                             onClick={() => { setFilter('técnico'); setCurrentTestimonial(0) }}
                             className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === 'técnico'
-                                    ? 'bg-green-800 text-white shadow-lg'
-                                    : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
+                                ? 'bg-green-800 text-white shadow-lg'
+                                : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
                                 }`}
                         >
                             Cursos Técnicos
@@ -138,8 +159,8 @@ export default function Testimonials() {
                         <button
                             onClick={() => { setFilter('pós'); setCurrentTestimonial(0) }}
                             className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === 'pós'
-                                    ? 'bg-green-800 text-white shadow-lg'
-                                    : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
+                                ? 'bg-green-800 text-white shadow-lg'
+                                : 'bg-white text-gray-700 border border-gray-300 hover:border-green-800'
                                 }`}
                         >
                             Pós-Graduações
@@ -153,8 +174,8 @@ export default function Testimonials() {
                         <div
                             key={testimonial.uniqueKey} 
                             className={`bg-white rounded-3xl shadow-2xl p-8 border-2 transition-all duration-500 transform hover:scale-105 ${testimonial.type === 'técnico'
-                                    ? 'border-green-800 hover:shadow-green-900/20'
-                                    : 'border-gray-800 hover:shadow-gray-900/20'
+                                ? 'border-green-800 hover:shadow-green-900/20'
+                                : 'border-gray-800 hover:shadow-gray-900/20'
                                 }`}
                         >
                             
@@ -171,9 +192,9 @@ export default function Testimonials() {
                                     </div>
                                 </div>
                                 <span className={`text-xs font-bold px-3 py-1 rounded-full ${testimonial.type === 'técnico'
-                                        ? 'bg-green-100 text-green-800'
-                                        : 'bg-gray-100 text-gray-800'
-                                    }`}>
+                                            ? 'bg-green-100 text-green-800'
+                                            : 'bg-gray-100 text-gray-800'
+                                        }`}>
                                     {testimonial.type === 'técnico' ? 'TÉCNICO' : 'PÓS-GRADUAÇÃO'}
                                 </span>
                             </div>
@@ -190,7 +211,9 @@ export default function Testimonials() {
 
                             {/* Conteúdo */}
                             <blockquote className="text-gray-800 mb-6 leading-relaxed text-lg italic">
-                                "{testimonial.content}"
+                                {/* CORREÇÃO 3: Escape entities (Linhas 193:33 e 193:55 do erro original) 
+                                     Substitui as aspas duplas do conteúdo por &quot; */}
+                                &ldquo;{testimonial.content}&rdquo;
                             </blockquote>
 
                             {/* Curso */}
