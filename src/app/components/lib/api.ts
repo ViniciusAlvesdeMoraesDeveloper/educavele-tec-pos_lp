@@ -16,10 +16,8 @@ type LoginResponse = {
   statusCode?: number;
   message?: string;
   error?: string;
-  // A API pode retornar isso:
-  // { authToken: { token: "..." } }
   authToken?: { token: string };
-  // ou, em alguns ambientes, apenas { token: "..." }
+  
   token?: string;
 };
 
@@ -101,7 +99,7 @@ async function loginAndCache(): Promise<string> {
 
   const data = (await safeJson<LoginResponse>(res)) ?? {};
 
-  // sua API: { authToken: { token: "..." } }
+  
   const token = data.authToken?.token ?? data.token;
 
   if (!res.ok || !token) {
@@ -112,7 +110,7 @@ async function loginAndCache(): Promise<string> {
   return token;
 }
 
-/* evita múltiplos logins concorrentes */
+
 let inFlightLogin: Promise<string> | null = null;
 
 /* =========================
@@ -139,7 +137,7 @@ export async function getToken(): Promise<string> {
 export async function submitSubscription(
   subscriptionData: SubscriptionData
 ): Promise<LeadResponse> {
-  // 1) tenta com token atual/renovado
+  
   let token = await getToken();
 
   let res = await fetch(`${API_BASE_URL}/leads/criar`, {
@@ -152,7 +150,7 @@ export async function submitSubscription(
     body: JSON.stringify(subscriptionData),
   });
 
-  // 2) se auth falhar, limpa cache, reloga e tenta 1x de novo
+ 
   if (res.status === 401 || res.status === 403) {
     clearToken();
     token = await getToken();

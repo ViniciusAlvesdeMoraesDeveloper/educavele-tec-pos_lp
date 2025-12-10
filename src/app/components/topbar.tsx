@@ -89,7 +89,7 @@ const TopBarLP: React.FC = () => {
                 <img
                   src="/logoeducavale.png" 
                   alt="Educavale logo"
-                  className="w-30 h-30 rounded-xl object-contain"
+                  className="w-25 h-30 rounded-xl object-contain"
                 />
               </a>
             </div>

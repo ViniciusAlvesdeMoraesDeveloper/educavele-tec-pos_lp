@@ -9,7 +9,7 @@ const carouselSlides = [
         description: "Prepare-se para atuar na área da saúde, oferecendo cuidados essenciais e promovendo o bem-estar dos pacientes.",
         icon: "🏥",
         stats: "Alta demanda profissional",
-        imagePath: "/tecnicoenfermagem.webp"
+        imagePath: "/Banner tec - Enfermagem.webp"
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const carouselSlides = [
         description: "Una conhecimentos de eletricidade e mecânica para projetar e manter sistemas industriais complexos.",
         icon: "⚙️",
         stats: "Salário competitivo na indústria",
-        imagePath: "/tecnicoeletromecanica.webp"
+        imagePath: "/Banner-tec-Eletromecânica.webp"
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ const carouselSlides = [
         description: "Obtenha a formação necessária para atuar como corretor de imóveis, intermediando compras, vendas e aluguéis.",
         icon: "🏠",
         stats: "Seja um corretor credenciado",
-        imagePath: "/tecnicotrasacaoimobiliaria.webp"
+        imagePath: "/Banner-tec-Transações.webp"
     },
     {
         id: 4,
@@ -33,7 +33,7 @@ const carouselSlides = [
         description: "Aprenda sobre gestão de recursos agrícolas, sustentabilidade e tecnologias modernas para o agronegócio.",
         icon: "🚜",
         stats: "Foco no Agronegócio 4.0",
-        imagePath: "/tecnicoagricultura.webp"
+        imagePath: "/Banner-tec-Agricultura.webp"
     }
 ]
 
@@ -160,7 +160,7 @@ export default function HeroSection() {
                             <div className="mt-8 md:mt-0 flex flex-col items-center">
                                 <div className="relative w-full h-48 md:h-96 mb-6 rounded-xl overflow-hidden shadow-md">
                                     <Image
-                                        src="/banner.webp"
+                                        src="/Banner-natal-Educa.webp"
                                         alt="Metodologia de Excelência Acadêmica"
                                         fill
                                         className="object-cover"

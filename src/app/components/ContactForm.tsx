@@ -17,15 +17,10 @@ declare global {
 }
 
 const whatsappNumbers = [
-  '5531981008528',
-  '5531981012568',
-  '5531982654672',
-  '5531982665400',
-  '5531982692321',
-  '5531973123670',
-  '5531973123734',
-  '5531982642835',
-  '5531982668947'
+  '553173575604',
+  '553193494235',
+  '553193656719',
+  '553193317704'
 ]
 
 export default function ContactForm() {
@@ -33,7 +28,7 @@ export default function ContactForm() {
     nome: '',
     email: '',
     telefone: '',
-    areaDeInteresse:'N/A'
+    areaDeInteresse: 'N/A'
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,11 +43,11 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const enterpriseId = toSafeNumber(process.env.NEXT_PUBLIC_ENTERPRISE_ID, 1 );
+    const enterpriseId = toSafeNumber(process.env.NEXT_PUBLIC_ENTERPRISE_ID, 1);
 
     const normalizedPhone = normalizePhone(formData.telefone);
-    
-    const subscriptionData : SubscriptionData ={
+
+    const subscriptionData: SubscriptionData = {
       name: formData.nome,
       phone: normalizedPhone,
       areaOfInterest: formData.areaDeInteresse,
@@ -66,13 +61,13 @@ export default function ContactForm() {
       console.error('Falha ao enviar lead para a API:', error);
     }
 
-    
 
-    
+
+
 
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', {
-        'send_to': '', 
+        'send_to': '',
         'value': 1.0,
         'currency': 'BRL',
         'transaction_id': ''
@@ -94,7 +89,7 @@ export default function ContactForm() {
       nome: '',
       email: '',
       telefone: '',
-      areaDeInteresse:'N/A'
+      areaDeInteresse: 'N/A'
     })
   }
 
