@@ -21,7 +21,7 @@ const carouselSlides = [
     },
     {
         id: 3,
-        title: "Técnico em Transação Imobiliária (TTI)",
+        title: "Técnico em Transação Imobiliária",
         description: "Obtenha a formação necessária para atuar como corretor de imóveis, intermediando compras, vendas e aluguéis.",
         icon: "🏠",
         stats: "Seja um corretor credenciado",
@@ -54,7 +54,7 @@ export default function HeroSection() {
                 <div className="container mx-auto px-4 py-9">
                     <div className="flex flex-col lg:flex-row items-center justify-between">
                         <div className="lg:w-1/2 mb-6 lg:mb-0">
-                            <h1 className="text-3xl md:text-3xl lg:text-5xl font-bold mb-4  leading-tight">
+                            <h1 className="text-3xl md:text-3xl lg:text-5xl font-bold mb-4 leading-tight">
                                 Formação Completa com
                                 <span className="text-green-400 block">EducaVale</span>
                             </h1>
@@ -64,7 +64,7 @@ export default function HeroSection() {
                             </p>
                         </div>
 
-                        <div className="lg:w-1/2 relative mb-5 ">
+                        <div className="lg:w-1/2 relative mb-5">
                             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                                 <h3 className="text-xl font-bold mb-4 text-center">Por que a EducaVale?</h3>
                                 <div className="grid grid-cols-2 gap-3">
@@ -82,7 +82,7 @@ export default function HeroSection() {
                                 </div>
                             </div>
 
-                            {/* Floating elements menores */}
+
                             <div className="absolute -top-2 -right-2 bg-green-800 text-white px-2 py-1 rounded text-sm font-bold rotate-3 shadow">
                                 🎓 10K+
                             </div>
@@ -93,7 +93,7 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                {/* Wave divider menor */}
+
                 <div id='sobre' className="absolute bottom-0 left-0 right-0">
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-8">
                         <path d="M0,0V30c120-30,240-30,360-10s240,40,360,40s240-30,360-40s240,10,360,10V0Z" className="fill-green-200"></path>
@@ -101,7 +101,7 @@ export default function HeroSection() {
                 </div>
             </div>
 
-            {/* About Us Section */}
+
             <section className="py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
@@ -203,7 +203,7 @@ export default function HeroSection() {
                             para você se qualificar rapidamente e entrar no mercado de trabalho com vantagem competitiva.
                         </p>
 
-                        {/* Estatísticas em destaque */}
+
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
                             {[
                                 { number: "6-18", text: "Meses de duração", icon: "⏱️" },
@@ -223,7 +223,7 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    {/* Carousel atualizado */}
+
                     <div className="relative max-w-7xl mx-auto">
                         <div className="overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20">
                             <div
@@ -232,11 +232,12 @@ export default function HeroSection() {
                             >
                                 {carouselSlides.map((slide) => (
                                     <div key={slide.id} className="w-full flex-shrink-0">
-                                        <div className="bg-white p-8 md:p-12">
-                                            <div className="grid lg:grid-cols-2 gap-8 items-center">
-                                                <div>
+                                        <div className="bg-white p-6 md:p-12 h-full">
+                                            <div className="flex flex-col lg:flex-row gap-8 h-full">
+                                                {/* Conteúdo textual - altura fixa */}
+                                                <div className="lg:w-1/2 flex flex-col">
                                                     <div className="flex items-center mb-4">
-                                                        <div className="text-6xl mr-4">{slide.icon}</div>
+                                                        <div className="text-5xl md:text-6xl mr-4">{slide.icon}</div>
                                                         <div className="bg-green-900 text-white px-4 py-1 rounded-full text-sm font-bold">
                                                             NOVO
                                                         </div>
@@ -244,24 +245,29 @@ export default function HeroSection() {
                                                     <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                                                         {slide.title}
                                                     </h3>
-                                                    <p className="text-lg text-gray-800 mb-6 leading-relaxed">
+                                                    <p className="text-lg text-gray-800 mb-6 leading-relaxed flex-grow">
                                                         {slide.description}
                                                     </p>
-                                                    <div className="bg-green-900 text-white rounded-lg p-4 inline-block">
+                                                    <div className="bg-green-900 text-white rounded-lg p-4 inline-block mt-auto">
                                                         <span className="font-semibold text-lg">
                                                             {slide.stats}
                                                         </span>
                                                     </div>
                                                 </div>
 
-                                                <div className="relative h-80 w-full">
-                                                    <Image
-                                                        src={slide.imagePath}
-                                                        alt={slide.title}
-                                                        fill
-                                                        className="rounded-lg shadow-lg object-cover"
-                                                    />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 to-transparent rounded-lg"></div>
+                                                {/* Imagem - altura fixa */}
+                                                <div className="lg:w-1/2 relative h-64 md:h-80 w-full flex items-center justify-center">
+                                                    <div className="relative w-full h-full">
+                                                        <Image
+                                                            src={slide.imagePath}
+                                                            alt={slide.title}
+                                                            fill
+                                                            className="rounded-lg shadow-lg object-contain"
+                                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                                            priority={slide.id === currentSlide + 1}
+                                                        />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 to-transparent rounded-lg"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -270,7 +276,7 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        {/* Navigation melhorada */}
+                        {/* Navigation */}
                         <button
                             onClick={() => setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length)}
                             aria-label="Slide anterior"
@@ -286,7 +292,7 @@ export default function HeroSection() {
                             <span className="text-2xl">›</span>
                         </button>
 
-                        {/* Indicadores melhorados */}
+                        {/* Indicadores */}
                         <div className="flex justify-center mt-8 space-x-3">
                             {carouselSlides.map((_, index) => (
                                 <button
